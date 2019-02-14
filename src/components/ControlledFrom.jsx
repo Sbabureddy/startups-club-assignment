@@ -97,6 +97,7 @@ export class ControlledFrom extends Component {
               onChange={this.handleChange}
               className="form-control"
               placeholder="Please Enter Your Phone Number Here"
+              pattern='[7-9][0-9]{9}'
               min={10}
               required
             />
