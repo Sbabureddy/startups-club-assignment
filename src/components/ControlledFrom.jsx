@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import serializeForm from "form-serialize";
 
 export class ControlledFrom extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export class ControlledFrom extends Component {
       mobile: 0,
       password: "",
       member: "",
-      submit: ''
+      submit: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,16 +27,8 @@ export class ControlledFrom extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      mobile: this.state.mobile,
-      password: this.state.password,
-      member: this.state.member,
-    });
-
-    console.log(JSON.stringify(this.state));
+    const values = serializeForm(e.target, { hash: true });
+    console.log(values);
   }
 
   render() {
@@ -97,8 +90,7 @@ export class ControlledFrom extends Component {
               onChange={this.handleChange}
               className="form-control"
               placeholder="Please Enter Your Phone Number Here"
-              pattern='[7-9][0-9]{9}'
-              min={10}
+              pattern="[0-9]{0,5}"
               required
             />
             <div className="invalid-feedback">Please Mobile Number Here</div>
