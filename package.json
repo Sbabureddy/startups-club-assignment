@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "email-validator": "^2.0.4",
     "form-serialize": "^0.7.2",
+    "formik": "^1.5.7",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "reactstrap": "^8.0.0",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
