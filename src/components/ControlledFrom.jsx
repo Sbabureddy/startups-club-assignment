@@ -59,7 +59,7 @@ export class ControlledFrom extends Component {
               name="firstName"
               value={this.state.firstName}
               onChange={this.handleChange}
-              placeholder="Enter Your First Name Here"
+              placeholder="Jhon"
               minLength="2"
               maxLength="8"
               required
@@ -76,7 +76,7 @@ export class ControlledFrom extends Component {
               name="lastName"
               value={this.state.lastName}
               onChange={this.handleChange}
-              placeholder="Please Enter Your Last Name Here"
+              placeholder="Doe"
               minLength="2"
               maxLength="8"
               required
@@ -94,19 +94,19 @@ export class ControlledFrom extends Component {
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
-              placeholder="Please Enter Your e-mail id"
+              placeholder="example@gmail.com"
               required
             />
             <FormText color="muted">Please Enter Your E-mail Id</FormText>
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="firstName">Mobile Number:</Label>
+            <Label for="mobile">Mobile Number:</Label>
             <Input
               type="tel"
               name="mobile"
               value={this.state.mobile}
               onChange={this.handleChange}
-              placeholder="Please Enter Your Phone Number Here"
+              placeholder="987654321"
               minLength="10"
               maxLength="10"
               required
@@ -118,17 +118,20 @@ export class ControlledFrom extends Component {
           </FormGroup>
           <FormGroup>
             <Label for="member">Type of Member</Label>
-            <Input
-              type="select"
+            <input
+              list="member"
+              className="form-control"
               value={this.state.member}
               onChange={this.handleChange}
               name="member"
               required
-            >
+            />
+            <datalist id="member">
               <option value="Entrepreneur">Entrepreneur</option>
               <option value="Investor">Investor</option>
               <option value="Incubator">Incubator</option>
-            </Input>
+            </datalist>
+            <FormText>Entrepreneur, Investor or Incubator</FormText>
           </FormGroup>
 
           <FormGroup>
