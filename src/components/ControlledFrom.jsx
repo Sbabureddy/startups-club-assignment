@@ -14,22 +14,20 @@ export class ControlledFrom extends Component {
       member: "",
       submit: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
+  handleChange = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     });
-  }
+  };
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault();
     const values = serializeForm(e.target, { hash: true });
     console.log(values);
-  }
+  };
 
   render() {
     return (
@@ -45,6 +43,8 @@ export class ControlledFrom extends Component {
                 onChange={this.handleChange}
                 className="form-control"
                 placeholder="Enter Your First Name Here"
+                minLength="2"
+                maxLength="8"
                 required
               />
               <div className="invalid-feedback">
@@ -60,6 +60,8 @@ export class ControlledFrom extends Component {
                 onChange={this.handleChange}
                 placeholder="Please Enter Your Last Name Here"
                 className="form-control"
+                minLength="2"
+                maxLength="8"
                 required
               />
               <div className="invalid-feedback">Please Your Last Name Here</div>
@@ -84,13 +86,14 @@ export class ControlledFrom extends Component {
           <div className="form-row mb-2">
             <label htmlFor="firstName">Mobile Number:</label>
             <input
-              type="number"
+              type="tel"
               name="mobile"
               value={this.state.mobile}
               onChange={this.handleChange}
               className="form-control"
               placeholder="Please Enter Your Phone Number Here"
-              pattern="[0-9]{0,5}"
+              minLength="10"
+              maxLength="10"
               required
             />
             <div className="invalid-feedback">Please Mobile Number Here</div>
@@ -119,7 +122,8 @@ export class ControlledFrom extends Component {
               onChange={this.handleChange}
               placeholder="Please Enter Your Pass Word Here"
               className="form-control"
-              pattern=".{8,}"
+              minLength="8"
+              maxLength="32"
               required
             />
             <div className="invalid-feedback">
