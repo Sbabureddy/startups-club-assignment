@@ -1,4 +1,14 @@
 import React, { Component } from "react";
+import {
+  Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  FormFeedback,
+  FormText
+} from "reactstrap";
 import serializeForm from "form-serialize";
 
 export class ControlledFrom extends Component {
@@ -9,7 +19,7 @@ export class ControlledFrom extends Component {
       firstName: "",
       lastName: "",
       email: "",
-      mobile: 0,
+      mobile: "",
       password: "",
       member: "",
       submit: ""
@@ -26,82 +36,90 @@ export class ControlledFrom extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const values = serializeForm(e.target, { hash: true });
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      password: "",
+      member: "",
+      submit: ""
+    });
     console.log(values);
   };
 
   render() {
     return (
-      <div className="container w-50">
-        <form onSubmit={this.handleSubmit} className="was-validated mx-3 my-3">
-          <div className="form-row my-2">
-            <div className="col-sm-12 col-md-6">
-              <label htmlFor="firstName">First Name:</label>
-              <input
-                type="text"
-                name="firstName"
-                value={this.state.firstName}
-                onChange={this.handleChange}
-                className="form-control"
-                placeholder="Enter Your First Name Here"
-                minLength="2"
-                maxLength="8"
-                required
-              />
-              <div className="invalid-feedback">
-                Please enter your first name
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-6">
-              <label htmlFor="firstName">Last Name:</label>
-              <input
-                type="text"
-                name="lastName"
-                value={this.state.lastName}
-                onChange={this.handleChange}
-                placeholder="Please Enter Your Last Name Here"
-                className="form-control"
-                minLength="2"
-                maxLength="8"
-                required
-              />
-              <div className="invalid-feedback">Please Your Last Name Here</div>
-            </div>
-          </div>
+      <Container className="w-50 my-3">
+        <Form onSubmit={this.handleSubmit} className="mx-3 my-3">
+          <FormGroup>
+            <Label for="firstName">First Name:</Label>
+            <Input
+              type="text"
+              name="firstName"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+              placeholder="Enter Your First Name Here"
+              minLength="2"
+              maxLength="8"
+              required
+            />
+            <FormFeedback>Check Your FirstName Length</FormFeedback>
+            <FormText color="muted">
+              Your First Name Should be in 2-8 characters
+            </FormText>
+          </FormGroup>
+          <FormGroup>
+            <Label for="firstName">Last Name:</Label>
+            <Input
+              type="text"
+              name="lastName"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+              placeholder="Please Enter Your Last Name Here"
+              minLength="2"
+              maxLength="8"
+              required
+            />
+            <FormFeedback>Check Your LastName Length</FormFeedback>
+            <FormText color="muted">
+              Your Last Name should be 2-8 characters
+            </FormText>
+          </FormGroup>
 
-          <div className="form-row mb-2">
-            <label htmlFor="firstName">E-Mail ID:</label>
-            <input
+          <FormGroup>
+            <Label for="email">E-Mail ID:</Label>
+            <Input
               type="email"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
-              className="form-control"
               placeholder="Please Enter Your e-mail id"
               required
             />
-            <div className="invalid-feedback">
-              Please Enter Your E-mail Id Here
-            </div>
-          </div>
-          <div className="form-row mb-2">
-            <label htmlFor="firstName">Mobile Number:</label>
-            <input
+            <FormText color="muted">Please Enter Your E-mail Id</FormText>
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="firstName">Mobile Number:</Label>
+            <Input
               type="tel"
               name="mobile"
               value={this.state.mobile}
               onChange={this.handleChange}
-              className="form-control"
               placeholder="Please Enter Your Phone Number Here"
               minLength="10"
               maxLength="10"
               required
             />
-            <div className="invalid-feedback">Please Mobile Number Here</div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="member">Type of Member</label>
-            <select
-              className="form-control"
+            <FormFeedback>Check Your Email ID</FormFeedback>
+            <FormText className="invalid-feedback">
+              Your Mobile Number should be 10 numbers
+            </FormText>
+          </FormGroup>
+          <FormGroup>
+            <Label for="member">Type of Member</Label>
+            <Input
+              type="select"
               value={this.state.member}
               onChange={this.handleChange}
               name="member"
@@ -110,31 +128,31 @@ export class ControlledFrom extends Component {
               <option value="Entrepreneur">Entrepreneur</option>
               <option value="Investor">Investor</option>
               <option value="Incubator">Incubator</option>
-            </select>
-          </div>
+            </Input>
+          </FormGroup>
 
-          <div className="form-row mb-2">
-            <label htmlFor="password">Password:</label>
-            <input
+          <FormGroup>
+            <Label for="password">Password:</Label>
+            <Input
               type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
               placeholder="Please Enter Your Pass Word Here"
-              className="form-control"
               minLength="8"
               maxLength="32"
               required
             />
-            <div className="invalid-feedback">
-              Please Enter Your Password Here
-            </div>
-          </div>
-          <button type="submit" className="btn btn-primary">
+            <FormFeedback>Check Your Password Length</FormFeedback>
+            <FormText color="muted">
+              Your Password Should be 8-32 character length
+            </FormText>
+          </FormGroup>
+          <Button type="submit" color="primary">
             Submit
-          </button>
-        </form>
-      </div>
+          </Button>
+        </Form>
+      </Container>
     );
   }
 }
