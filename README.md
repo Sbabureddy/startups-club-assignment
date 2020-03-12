@@ -1,10 +1,8 @@
-# About Registration From
+# Startup-Club-Internship Assignment
 
-I have created registration form with minimum configuration for fornted only. 
+## Registration Form Features
 
-## What I did in this repository
-
-- Make All Feilds are neccessary.
+- All Feilds are neccessary.
 - Password Feild with minum length of 8 characters.
-- Submiteed form Data in JSON.
-- Used Bootstap for Form Validation.
+- form submitt's Data in JSON.
+- Use Datalist Input Element.
